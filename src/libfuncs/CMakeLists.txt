@@ -1,6 +1,6 @@
 set(target_name helpfuncs)
 
-add_library(${target_name} STATIC
+add_library(${target_name} SHARED
   libfuncs/funcs.cpp
   libfuncs/funcs.hpp)
 
