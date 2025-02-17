@@ -6,7 +6,8 @@
 namespace inftcs {
 class Server {
  private:
-  int sock, port;
+  int sock = 0;
+  int port;
   struct sockaddr_in servaddr, clientaddr;
 
  public:

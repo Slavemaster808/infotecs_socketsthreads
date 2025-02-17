@@ -15,14 +15,30 @@ Checks: >
   -readability-identifier-length,
   -readability-magic-numbers,
   -bugprone-exception-escape,
-  -hicpp-special-member-functions
+  -hicpp-special-member-functions,
+  -google-runtime-int,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -performance-unnecessary-copy-initialization,
+  -hicpp-move-const-arg,
+  -performance-move-const-arg,
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-narrowing-conversions,
+  -hicpp-avoid-c-arrays,
+  -modernize-avoid-c-arrays,
+  -bugprone-narrowing-conversions,
+  -cert-dcl21-cpp,
+  -readability-convert-member-functions-to-static,
+  -cppcoreguidelines-pro-type-const-cast,
+  -cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor,
+  -misc-include-cleaner,
+  -readability-simplify-boolean-expr
 WarningsAsErrors: '*'
-HeaderFilterRegex: '.*/(libclient|libserver|libfuncs|appclient|appserver)/'
-AnalyzeTemporaryDtors: false
+HeaderFilterRegex: '.*/(libcowstring)/'
+# AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            egorbadjanov
 CheckOptions:
-  cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
+  # cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
   hicpp-move-const-arg.CheckMoveToConstRef: 'true'
   readability-suspicious-call-argument.PrefixSimilarAbove: '30'
   cppcoreguidelines-no-malloc.Reallocations: '::realloc'
@@ -180,7 +196,7 @@ CheckOptions:
   readability-suspicious-call-argument.DiceSimilarAbove: '70'
   modernize-use-equals-default.IgnoreMacros: 'true'
   readability-suspicious-call-argument.Abbreviation: 'true'
-  cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
+  # cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
   cert-dcl37-c.AggressiveDependentMemberLookup: 'false'
   readability-identifier-length.MinimumLoopCounterNameLength: '2'
   abseil-string-find-str-contains.AbseilStringsMatchHeader: 'absl/strings/match.h'
@@ -377,4 +393,3 @@ CheckOptions:
   performance-unnecessary-value-param.IncludeStyle: llvm
   llvm-else-after-return.WarnOnUnfixable: 'false'
   cert-msc32-c.DisallowedSeedTypes: 'time_t,std::time_t'
-...

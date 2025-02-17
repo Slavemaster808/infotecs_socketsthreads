@@ -1,11 +1,13 @@
 #include <libfuncs/funcs.hpp>
 
+#include <algorithm>
+
 namespace helper {
 void strTransform(std::string& str) {
-  std::sort(str.begin(), str.end(), std::greater<char>());
+  std::sort(str.begin(), str.end(), std::greater<>());
 
   for (size_t i = 0; i < str.size();) {
-    unsigned int d = str[i] - '0';
+    const unsigned int d = str[i] - '0';
     if (d % 2 == 0) {
       str.replace(i, 1, "KB");
       i += 2;
@@ -18,7 +20,7 @@ void strTransform(std::string& str) {
 unsigned int strDigitSum(const std::string& str) {
   unsigned int sum = 0;
   for (const auto& c : str) {
-    if (std::isdigit(c)) {
+    if (std::isdigit(c) != 0) {
       sum += c - '0';
     }
   }
@@ -26,6 +28,6 @@ unsigned int strDigitSum(const std::string& str) {
 }
 
 bool checkDigit(const unsigned int sum) {
-  return ((sum > 2) && (sum % 32 == 0)) ? true : false;
+  return (sum > 2) && (sum % 32 == 0) ? true : false;
 }
 }  // namespace helper
