@@ -1,4 +1,5 @@
 #include <libclient/client.hpp>
+#include <libfuncs/funcs.hpp>
 
 #include <arpa/inet.h>
 #include <unistd.h>
@@ -21,32 +22,22 @@ std::string Buffer::get() {
 
 void Handler::input() {
   while (true) {
-    std::string in;
-    std::getline(std::cin, in);
+    std::string inStr;
+    std::getline(std::cin, inStr);
 
-    if (in == "q") {
+    if (inStr == "q") {
       break;
     }
 
-    if (in.size() > 64 ||
-        in.find_first_not_of("0123456789") != std::string::npos) {
+    if (inStr.size() > 64 ||
+        inStr.find_first_not_of("0123456789") != std::string::npos) {
       std::cerr << "Invalid input." << '\n';
       continue;
     }
 
-    std::sort(in.begin(), in.end(), std::greater<char>());
+    helper::strTransform(inStr);
 
-    for (size_t i = 0; i < in.size();) {
-      unsigned int d = in[i] - '0';
-      if (d % 2 == 0) {
-        in.replace(i, 1, "KV");
-        i += 2;
-      } else {
-        i++;
-      }
-    }
-
-    buff.set(in);
+    buff.set(inStr);
   }
   exit(0);
 }
@@ -81,12 +72,7 @@ void Sender::sendData() {
     std::string data = buff.get();
     std::cout << "Result string: " << data << '\n';
 
-    unsigned int sum = 0;
-    for (const auto& c : data) {
-      if (std::isdigit(c)) {
-        sum += c - '0';
-      }
-    }
+    unsigned int sum = helper::strDigitSum(data);
 
     std::cout << "Sum of all digits: " << sum << '\n';
     sendToServer(sum);

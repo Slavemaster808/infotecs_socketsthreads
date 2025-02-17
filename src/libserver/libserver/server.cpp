@@ -1,7 +1,7 @@
+#include <libfuncs/funcs.hpp>
 #include <libserver/server.hpp>
 
 #include <unistd.h>
-#include <cstring>
 #include <iostream>
 #include <thread>
 
@@ -40,9 +40,8 @@ void Server::start() {
       continue;
     }
 
-    // Создаем поток для обработки клиента
     std::thread clientThread(&Server::handleClient, this, conn);
-    clientThread.detach();  // Отсоединяем поток, чтобы он работал независимо
+    clientThread.detach();
   }
 
   close(sock);
@@ -51,7 +50,7 @@ void Server::start() {
 void Server::handleClient(int conn) {
   unsigned int sum = 0;
   while (recv(conn, &sum, sizeof(sum), 0) > 0) {
-    if ((sum > 2) && (sum % 32 == 0)) {
+    if (helper::checkDigit(sum)) {
       std::cout << "Received data: " << sum << '\n';
     } else {
       std::cerr << "Error: Invalid data received." << '\n';
