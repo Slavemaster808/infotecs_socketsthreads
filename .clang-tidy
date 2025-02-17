@@ -33,12 +33,10 @@ Checks: >
   -misc-include-cleaner,
   -readability-simplify-boolean-expr
 WarningsAsErrors: '*'
-HeaderFilterRegex: '.*/(libcowstring)/'
-# AnalyzeTemporaryDtors: false
+HeaderFilterRegex: '/src'
 FormatStyle:     none
 User:            egorbadjanov
 CheckOptions:
-  # cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
   hicpp-move-const-arg.CheckMoveToConstRef: 'true'
   readability-suspicious-call-argument.PrefixSimilarAbove: '30'
   cppcoreguidelines-no-malloc.Reallocations: '::realloc'
@@ -196,7 +194,6 @@ CheckOptions:
   readability-suspicious-call-argument.DiceSimilarAbove: '70'
   modernize-use-equals-default.IgnoreMacros: 'true'
   readability-suspicious-call-argument.Abbreviation: 'true'
-  # cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: 'true'
   cert-dcl37-c.AggressiveDependentMemberLookup: 'false'
   readability-identifier-length.MinimumLoopCounterNameLength: '2'
   abseil-string-find-str-contains.AbseilStringsMatchHeader: 'absl/strings/match.h'
