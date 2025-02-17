@@ -1,7 +1,6 @@
 #pragma once
 
 #include <arpa/inet.h>
-// #include <pthread.h>
 #include <thread>
 
 namespace inftcs {

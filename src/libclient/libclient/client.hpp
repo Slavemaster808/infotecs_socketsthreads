@@ -15,6 +15,7 @@ class Buffer {
 
  public:
   void set(const std::string& data);
+
   std::string get(void);
 };
 
@@ -24,6 +25,7 @@ class Handler {
 
  public:
   Handler(Buffer& b) : buff(b) {};
+
   void input(void);
 };
 
@@ -34,6 +36,7 @@ class Sender {
 
  public:
   Sender(Buffer& b) : buff(b) {};
+
   void sendData(void);
 };
 }  // namespace inftcs

@@ -7,7 +7,7 @@ void strTransform(std::string& str) {
   for (size_t i = 0; i < str.size();) {
     unsigned int d = str[i] - '0';
     if (d % 2 == 0) {
-      str.replace(i, 1, "KV");
+      str.replace(i, 1, "KB");
       i += 2;
     } else {
       i++;
